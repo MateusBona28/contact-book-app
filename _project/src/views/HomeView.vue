@@ -1,9 +1,13 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Home from '../components/Home.vue'
+import HelloWorld from '../components/HelloWorld.vue'
+import Header from '../components/Header.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Header></Header>
+    <Home></Home>
+    <HelloWorld msg="Mensagem por props"></HelloWorld>
   </main>
 </template>

@@ -7,7 +7,5 @@ import Header from '../components/Header.vue'
 <template>
   <main>
     <Header></Header>
-    <Home></Home>
-    <HelloWorld msg="Mensagem por props"></HelloWorld>
   </main>
 </template>

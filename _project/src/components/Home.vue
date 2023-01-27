@@ -6,8 +6,6 @@ export default {
 
 <template>
   <div>
-    <button>Cadastrar</button>
-    <button>Login</button>
   </div>
 </template>
 

@@ -1,12 +1,16 @@
 <script>
+import ModalRegister from '../components/ModalRegister.vue'
+
 export default {
+  name: 'LoginForm',
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      openRegisterModal: false,
     }
   },
-  // actions
+
   methods: {
     updateEmailValue(e) {
       this.email = e.target.value
@@ -16,8 +20,13 @@ export default {
     },
     log() {
       console.log(this.email, this.password)
-    }
-  }
+    },
+    changeRegisterModalDisplay() {
+      this.openRegisterModal = !this.openRegisterModal
+      console.log(this.openRegisterModal)
+    },
+  },
+  components: { ModalRegister }
 }
 </script>
 
@@ -25,18 +34,19 @@ export default {
   <div class="container-formLogin">
     <form action="" class="formLogin">
       <div class="formLogin-inputDiv">
-        <input ref="email" type="text" placeholder="Email" @change="(e) => {updateEmailValue(e)}">
+        <input type="text" placeholder="Email" @change="(e) => {updateEmailValue(e)}">
       </div>
       <div class="formLogin-inputDiv">
-        <input ref="password" type="password" placeholder="Senha" @change="(e) => {updatePasswordValue(e)}">
+        <input type="password" placeholder="Senha" @change="(e) => {updatePasswordValue(e)}">
       </div>
       <button type="button" class="appGreenButton" @click="() => {log()}">Entrar</button>
     </form>
     <div class="greyline"></div>
     <div class="container-formLogin__createAccount">
-      <button class="createAccountBtn" type="button">Criar nova conta</button>
+      <button class="createAccountBtn" type="button" @click="() => {changeRegisterModalDisplay()}">Criar conta</button>
     </div>
   </div>
+  <ModalRegister v-if="openRegisterModal === true" :changeRegisterModalDisplay="changeRegisterModalDisplay" />
 </template>
 
 <style>

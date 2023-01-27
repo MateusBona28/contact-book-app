@@ -51,6 +51,8 @@ export default {
     border-radius: 6px;
 
     background-color: #fff;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23);
   }
 
   .formLogin {

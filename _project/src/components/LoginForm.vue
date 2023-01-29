@@ -85,7 +85,7 @@ export default {
 
   .greyline {
     width: 85%;
-    height: 2px;
+    height: 1px;
     margin-left: auto;
     margin-right: auto;
 

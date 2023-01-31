@@ -1,13 +1,19 @@
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  methods: {
+    logout() {
+      localStorage.clear()
+      history.go('/login')
+    }
+  }
 }
 </script>
 
 <template>
   <div class="header-container">
     <h1>Contact Book</h1>
-    <button>Login</button>
+    <button type="button" class="appGreenButton" @click="() => { logout() }" >Sair</button>
   </div>
 </template>
 

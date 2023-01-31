@@ -1,5 +1,7 @@
 <script>
+import axios from 'axios'
 import ModalRegister from '../components/ModalRegister.vue'
+import { useUserStore } from '../stores/userStore'
 
 export default {
   name: 'LoginForm',
@@ -8,6 +10,7 @@ export default {
       email: "",
       password: "",
       openRegisterModal: false,
+      account: useUserStore()
     }
   },
 
@@ -18,15 +21,27 @@ export default {
     updatePasswordValue(e) {
       this.password = e.target.value
     },
-    log() {
-      console.log(this.email, this.password)
-    },
     changeRegisterModalDisplay() {
       this.openRegisterModal = !this.openRegisterModal
-      console.log(this.openRegisterModal)
     },
+    login() {
+      axios.post('http://localhost:3000/login', {
+        email: this.email,
+        password: this.password,
+      })
+      .then((res) => { 
+        this.account.getToken(res.data.token)
+        this.account.getUser()
+        localStorage.setItem('CONTACT_BOOK_TOKEN', res.data.token)
+        history.go('/')
+      })
+      .catch((err) => { console.log(err) })
+    },
+    log()  {
+      console.log(this.account.token)
+    }
   },
-  components: { ModalRegister }
+  components: { ModalRegister },
 }
 </script>
 
@@ -39,7 +54,7 @@ export default {
       <div class="formLogin-inputDiv">
         <input type="password" placeholder="Senha" @change="(e) => {updatePasswordValue(e)}">
       </div>
-      <button type="button" class="appGreenButton" @click="() => {log()}">Entrar</button>
+      <button type="button" class="appGreenButton" @click="() => {login()}">Entrar</button>
     </form>
     <div class="greyline"></div>
     <div class="container-formLogin__createAccount">

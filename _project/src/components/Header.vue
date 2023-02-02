@@ -12,7 +12,7 @@ export default {
 
 <template>
   <div class="header-container">
-    <h1>Contact Book</h1>
+    <h1 class="title">Contact Book</h1>
     <div class="header-container__btnContainer">
       <button type="button" class="appGreenButton" @click="() => { logout() }" >Sair</button>
     </div>
@@ -34,6 +34,10 @@ export default {
 
   .header-container__btnContainer {
     width: 80px;
+  }
+
+  .title {
+    color: #0E3B43;;
   }
 
 </style>

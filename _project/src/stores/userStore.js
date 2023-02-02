@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', {
 
         this.id = decoded.sub
       },
-      getUser() {
+      async getUser() {
         axios.get(`http://localhost:3000/accounts/${this.id}`, {
           headers: {
             "Authorization": `Bearer ${this.token}`
